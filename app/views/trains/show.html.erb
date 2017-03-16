@@ -22,5 +22,34 @@
     Маршрут не назначен
   <% end %>
 </p>
+
+<p>
+  <strong>Количество плацкартных вагонов:</strong>
+  <%= @train.cars.where(car_type: 'плацкарт').size %> 
+  <p>
+    <strong>Количество верхних мест:</strong>
+    <%= @sum_top_seat_pl %>
+  </p>
+
+  <p>
+    <strong>Количество нижних мест:</strong>
+    <%= @sum_lower_seat_pl %>
+  </p>
+</p>
+
+<p>
+  <strong>Количество купейных вагонов:</strong>
+  <%= @train.cars.where(car_type: 'купе').size %>
+  <p>
+    <strong>Количество верхних мест:</strong>
+    <%= @sum_top_seat_coupe %>
+  </p>
+
+  <p>
+    <strong>Количество нижних мест:</strong>
+    <%= @sum_lower_seat_coupe %>
+  </p>
+</p>
+
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
