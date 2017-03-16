@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список вагонов</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @cars %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Создать вагон', new_car_path %>

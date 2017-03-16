@@ -8,6 +8,22 @@ class TrainsController < ApplicationController
 
   # GET /trains/1
   def show
+    @sum_top_seat_pl = 0
+    @sum_lower_seat_pl = 0
+    @sum_top_seat_coupe = 0
+    @sum_lower_seat_coupe = 0
+
+    # counting_places('купе', @sum_top_seat_coupe, @sum_lower_seat_coupe)  
+    @train.cars.where(car_type: 'купе').each do |car|
+      @sum_top_seat_coupe += car.top_seat
+      @sum_lower_seat_coupe += car.lower_seat
+    end
+
+    @train.cars.where(car_type: 'плацкарт').each do |car|
+      @sum_top_seat_pl += car.top_seat
+      @sum_lower_seat_pl += car.lower_seat
+    end
+    # counting_places('плацкарт', @sum_top_seat_pl, @sum_lower_seat_pl)
   end
 
   # GET /trains/new
@@ -61,5 +77,12 @@ class TrainsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def train_params
       params.require(:train).permit(:number, :current_station_id, :route_id)
+    end
+
+    def counting_places(type_name, top_seat, lower_seat)
+      @train.cars.where(car_type: type_name).each do |car|
+        top_seat += car.top_seat
+        lower_seat += car.lower_seat
+      end
     end
 end

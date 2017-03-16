@@ -1,0 +1,33 @@
+<%= form_for(@car) do |f| %>
+  <%= render 'common/errors', resource: @car %>  
+
+  <div class="field">
+    <%= f.label :car_type %>
+    <%= f.text_field :car_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_seat %>
+    <%= f.number_field :top_seat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lower_seat %>
+    <%= f.number_field :lower_seat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :train, 'Номер поезда' %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{ @car.new_record? ? 'Создать' : 'Изменить' }" %>
+  </div>
+<% end %>
+
+
+
+
+
+  
