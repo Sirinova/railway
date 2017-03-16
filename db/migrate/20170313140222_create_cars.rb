@@ -5,7 +5,6 @@ class CreateCars < ActiveRecord::Migration[5.0]
       t.integer :top_seat
       t.integer :lower_seat
 
-
       t.timestamps
     end
   end
